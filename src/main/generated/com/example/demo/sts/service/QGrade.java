@@ -17,15 +17,15 @@ public class QGrade extends EntityPathBase<Grade> {
 
     private static final long serialVersionUID = -602130360L;
 
-    public static final QGrade grade = new QGrade("grade");
+    public static final QGrade grade1 = new QGrade("grade1");
 
     public final StringPath examDate = createString("examDate");
+
+    public final StringPath grade = createString("grade");
 
     public final NumberPath<Integer> grdNum = createNumber("grdNum", Integer.class);
 
     public final StringPath passExam = createString("passExam");
-
-    public final StringPath profileImage = createString("profileImage");
 
     public final NumberPath<Integer> score = createNumber("score", Integer.class);
 

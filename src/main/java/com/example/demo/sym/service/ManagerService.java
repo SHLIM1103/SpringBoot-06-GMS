@@ -1,4 +1,5 @@
 package com.example.demo.sym.service;
+
 import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,21 +9,21 @@ import com.example.demo.cmm.utl.DummyGenerator;
 
 @Service
 public class ManagerService {
-    @Autowired ManagerMapper managerMapper;
+    @Autowired ManagerRepository managerRepository;
     @Autowired DummyGenerator dummy;
 
-    public int register(Manager manager) {
-        return managerMapper.insert(manager);
+    public void register(Manager manager) {
+        managerRepository.save(manager);
     }
 
-	public int insertMany(int count) {
+	public void insertMany(int count) {
 		var list = new ArrayList<Manager>();
 		Manager m = null;
 		for(int i=0; i< count; i++) {
-			m = dummy.makeManager();
-			list.add(m);
+//			m = dummy.makeManager();
+//			list.add(m);
 		}
-		return managerMapper.insertMany(list);
+		managerRepository.saveAll(null);
 	}
 
 }

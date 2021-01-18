@@ -13,7 +13,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class CommonService {
-    @Autowired CommonMapper commonMapper;
     @Autowired Box<String> bx;
     @Autowired Vector<String> vc;
 
@@ -36,23 +35,23 @@ public class CommonService {
                 Sql.CREATE_GRADES.toString(),
                 Sql.CREATE_ARTICLES.toString(),
                 Sql.CREATE_REPLIES.toString());
-        for(int i=0; i< l1.size(); i++) {
+        for(int i = 0; i < l1.size(); i++) {
             map.put("DROP_TABLE", l1.get(i));
-            commonMapper.dropTable(map);
             map.clear();
         }
-        for(int i=0; i< l2.size(); i++) {
+        for(int i = 0; i < l2.size(); i++) {
             map.put("CREATE_TABLE", l2.get(i));
-            commonMapper.createTable(map);
             map.clear();
         }
         bx.put("TABLE_COUNT", Sql.TABLE_COUNT.toString());
 
-        return (commonMapper.tableCount(map)!=0) ? 1: 0;
+        return 0;
     }
+
     public int totalCount() {
         return 0;
     }
+
     public int dropTable() {
         return 0;
     }

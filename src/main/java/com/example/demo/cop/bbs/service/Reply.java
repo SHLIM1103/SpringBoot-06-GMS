@@ -9,7 +9,7 @@ import javax.persistence.*;
 @ToString
 @NoArgsConstructor(access = AccessLevel.PUBLIC)
 @Table(name = "replies")
-public class Reply extends Article {
+public class Reply {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "rep_num") private int repNum;

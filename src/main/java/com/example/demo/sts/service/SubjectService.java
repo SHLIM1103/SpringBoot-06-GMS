@@ -16,40 +16,37 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class SubjectService {
-	@Autowired SubjectMapper subjectMapper;
+	@Autowired SubjectRepository subjectRepository;
 	@Autowired Vector<Subject> vcSubject;
 	@Autowired Vector<GradeVo> vcGradeVo;
 	@Autowired Box<Vector<GradeVo>> bx;
-	
+
 	public void insertMany(int count) {
-		
 		var l1 = Arrays.asList("Java","Spring","Python","jQuery","eGovframe");
 		var l2 = Arrays.asList("Java 언어","Spring 프레임워크","Python 언어","jQuery 라이브러리","전자정부 ");
 		Subject s = null;
 		vcSubject.clear();
-		for(int i=0; i< count; i++) {
+		for(int i = 0; i < count; i++) {
 			s = new Subject();
-//			s.setDescription(l2.get(i));
-//			s.setSubject(l1.get(i));
-			vcSubject.add(s);
+			subjectRepository.save(s);
 		}
-		subjectMapper.insertMany(vcSubject.get());
     }
 	
-	public Vector<GradeVo> groupBySubject(Box<String> bx){ //210
-		List<GradeVo> l = subjectMapper.groupBySubject(bx.get());
-		Map<Integer, List<GradeVo>> m 
+	public Vector<GradeVo> groupBySubject(Box<String> bx) { // p.210
+		/*
+		List<GradeVo> l = subjectRepository.groupBySubject(bx.get());
+		Map<Integer, List<GradeVo>> m
         = l.stream().collect( groupingBy(GradeVo::getSubNum)); 
 		List<GradeVo> l2 = m.get(integer.apply(bx.get("subNum")));
 		l2.forEach(System.out::println);
+		*/
 		return vcGradeVo;
 	}
 
-	public Vector<GradeVo> groupByGrade(Box<String> bx){ // 211
-		List<GradeVo> l = subjectMapper
-				.groupBySubject(bx.get());
-		
-		Map<SubjectCate, List<GradeVo>> m 
+	public Vector<GradeVo> groupByGrade(Box<String> bx) { // p. 211
+		/*
+		List<GradeVo> l = subjectRepository.groupBySubject(bx.get());
+		Map<SubjectCate, List<GradeVo>> m
         = l.stream().collect( 
         		groupingBy( gradeVo -> {
         			 if(gradeVo.getScore() > 90) return SubjectCate.GRADE_A;
@@ -61,29 +58,20 @@ public class SubjectService {
         		})); 
 		List<GradeVo> l2 = m.get(SubjectCate.GRADE_B);
 		l2.forEach(System.out::println);
-		return vcGradeVo;
+		*/
+		return null;
 	}
 
-	public Vector<GradeVo> filterBySubject(Box<String> bx){ // 212
-		List<GradeVo> l = subjectMapper
-				.groupBySubject(bx.get());
-		
-		Map<Integer, List<GradeVo>> m 
+	public Vector<GradeVo> filterBySubject(Box<String> bx) { // p. 212
+		/*
+		List<GradeVo> l = subjectRepository.groupBySubject(bx.get());
+		Map<Integer, List<GradeVo>> m
 	        = l.stream()
 	        .filter(grade -> grade.getScore() > 70)
 	        .collect(groupingBy( GradeVo::getSubNum)); 
 		List<GradeVo> l2 = m.get(1);
 		l2.forEach(System.out::println);
-		return vcGradeVo;
+		*/
+		return null;
 	}
 }
-
-
-
-
-
-
-
-
-
-

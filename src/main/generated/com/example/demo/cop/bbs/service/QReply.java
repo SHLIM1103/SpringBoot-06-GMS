@@ -19,22 +19,11 @@ public class QReply extends EntityPathBase<Reply> {
 
     public static final QReply reply = new QReply("reply");
 
-    public final QArticle _super = new QArticle(this);
-
     public final NumberPath<Integer> artNum = createNumber("artNum", Integer.class);
 
     public final StringPath content = createString("content");
 
-    //inherited
-    public final StringPath count = _super.count;
-
-    public final NumberPath<Integer> replyNum = createNumber("replyNum", Integer.class);
-
-    //inherited
-    public final StringPath title = _super.title;
-
-    //inherited
-    public final NumberPath<Integer> writerNum = _super.writerNum;
+    public final NumberPath<Integer> repNum = createNumber("repNum", Integer.class);
 
     public QReply(String variable) {
         super(Reply.class, forVariable(variable));

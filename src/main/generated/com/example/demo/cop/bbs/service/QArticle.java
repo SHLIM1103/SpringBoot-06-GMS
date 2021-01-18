@@ -19,7 +19,7 @@ public class QArticle extends EntityPathBase<Article> {
 
     public static final QArticle article = new QArticle("article");
 
-    public final NumberPath<Long> artNum = createNumber("artNum", Long.class);
+    public final NumberPath<Integer> artNum = createNumber("artNum", Integer.class);
 
     public final StringPath content = createString("content");
 

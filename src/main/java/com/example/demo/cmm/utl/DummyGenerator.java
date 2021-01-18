@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import com.example.demo.sym.service.Manager;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.cmm.enm.Path;
@@ -39,6 +40,7 @@ public class DummyGenerator {
 		}
 		return year+"-"+month+"-"+date;
 	}
+
 	public String makeRegdate() {
 		int year = random.apply(2019, 2020);
 		int month = random.apply(1, 13);
@@ -51,9 +53,11 @@ public class DummyGenerator {
 		}
 		return year+"-"+month+"-"+date;
 	}
+
 	public String makeExamdate() {
 		return "2020-11-30";
 	}
+
 	/*
 	 * 랜덤 성별 생성하기
 	 * "M" - male, "F" - female
@@ -63,6 +67,7 @@ public class DummyGenerator {
 		Collections.shuffle(arr);
 		return arr.get(0);
 	}
+
 	/**********************
 	 * 랜덤사용자 ID 생성하기 *
 	 * a-z 0-9            *
@@ -74,6 +79,7 @@ public class DummyGenerator {
 		Collections.shuffle(ls);
 		return ls.get(0)+ls.get(1)+ls.get(2)+ls.get(3);
 	}
+
 	/**********************
 	 * 랜덤 전화번호 생성하기 *
 	 **********************
@@ -93,15 +99,15 @@ public class DummyGenerator {
 		        "변", "여", "추", "노", "도", "소", "신", "석", "선", "설", "마", "길", "주", "연", "방", "위", "표", "명", "기", "반", "왕", "금",
 		        "옥", "육", "인", "맹", "제", "모", "장", "남", "탁", "국", "여", "진", "어", "은", "편", "구", "용");
 	    List<String> name1 = Arrays.asList("가", "강", "건", "경", "고", "관", "광", "구", "규", "근", "기", "길", "나", "남", "노", "누", "다",
-	        "단", "달", "담", "대", "덕", "도", "동", "두", "라", "래", "로", "루", "리", "마", "만", "명", "무", "문", "미", "민", "바", "박",
-	        "백", "범", "별", "병", "보", "빛", "사", "산", "상", "새", "서", "석", "선", "설", "섭", "성", "세", "소", "솔", "수", "숙", "순",
-	        "숭", "슬", "승", "시", "신", "아", "안", "애", "엄", "여", "연", "영", "예", "오", "옥", "완", "요", "용", "우", "원", "월", "위",
-	        "유", "윤", "율", "으", "은", "의", "이", "익", "인", "일", "잎", "자", "잔", "장", "재", "전", "정", "제", "조", "종", "주", "준",
-	        "중", "지", "진", "찬", "창", "채", "천", "철", "초", "춘", "충", "치", "탐", "태", "택", "판", "하", "한", "해", "혁", "현", "형",
-	        "혜", "호", "홍", "화", "환", "회", "효", "훈", "휘", "희", "운", "모", "배", "부", "림", "봉", "혼", "황", "량", "린", "을", "비",
-	        "솜", "공", "면", "탁", "온", "디", "항", "후", "려", "균", "묵", "송", "욱", "휴", "언", "령", "섬", "들", "견", "추", "걸", "삼",
-	        "열", "웅", "분", "변", "양", "출", "타", "흥", "겸", "곤", "번", "식", "란", "더", "손", "술", "훔", "반", "빈", "실", "직", "흠",
-	        "흔", "악", "람", "뜸", "권", "복", "심", "헌", "엽", "학", "개", "롱", "평", "늘", "늬", "랑", "얀", "향", "울", "련");
+				"단", "달", "담", "대", "덕", "도", "동", "두", "라", "래", "로", "루", "리", "마", "만", "명", "무", "문", "미", "민", "바", "박",
+				"백", "범", "별", "병", "보", "빛", "사", "산", "상", "새", "서", "석", "선", "설", "섭", "성", "세", "소", "솔", "수", "숙", "순",
+				"숭", "슬", "승", "시", "신", "아", "안", "애", "엄", "여", "연", "영", "예", "오", "옥", "완", "요", "용", "우", "원", "월", "위",
+				"유", "윤", "율", "으", "은", "의", "이", "익", "인", "일", "잎", "자", "잔", "장", "재", "전", "정", "제", "조", "종", "주", "준",
+				"중", "지", "진", "찬", "창", "채", "천", "철", "초", "춘", "충", "치", "탐", "태", "택", "판", "하", "한", "해", "혁", "현", "형",
+				"혜", "호", "홍", "화", "환", "회", "효", "훈", "휘", "희", "운", "모", "배", "부", "림", "봉", "혼", "황", "량", "린", "을", "비",
+				"솜", "공", "면", "탁", "온", "디", "항", "후", "려", "균", "묵", "송", "욱", "휴", "언", "령", "섬", "들", "견", "추", "걸", "삼",
+				"열", "웅", "분", "변", "양", "출", "타", "흥", "겸", "곤", "번", "식", "란", "더", "손", "술", "훔", "반", "빈", "실", "직", "흠",
+				"흔", "악", "람", "뜸", "권", "복", "심", "헌", "엽", "학", "개", "롱", "평", "늘", "늬", "랑", "얀", "향", "울", "련");
 	    List<String> name2 = Arrays.asList("가", "강", "건", "경", "고", "관", "광", "구", "규", "근", "기", "길", "나", "남", "노", "누", 
 	    		"다", "단", "달", "담", "대", "덕", "도", "동", "두", "라", "래", "로", "루", "리", "마", "만", "명", "무", "문", "미", 
 	    		"민", "바", "박", "백", "범", "별", "병", "보", "빛", "사", "산", "상", "새", "서", "석", "선", "설", "섭", "성", "세",
@@ -122,11 +128,13 @@ public class DummyGenerator {
 	    		.get(0);
 	    return fname.get(0)+a[0]+a[1];
 	}
+
 	public String makeSubject() {
 		List<String> ls = Arrays.asList("Java","Spring","Python","jQuery","eGovframe");
 		 Collections.shuffle(ls);
 		 return ls.get(0);
 	}
+
 	public int makeSubNum() {
 		List<Integer> ls = Arrays.asList(1,2,3,4,5);
 		 Collections.shuffle(ls);
@@ -138,7 +146,6 @@ public class DummyGenerator {
 		Collections.shuffle(ls);
 		return makeUserid()+ls.get(0);
 	}
-	
 
 	public Student makeStudent() {
 		return new Student(makeUserid(), 
@@ -150,6 +157,7 @@ public class DummyGenerator {
 				Path.DEFAULT_PROFILE.toString(),
 				1);
 	}
+
 	/******************************
 	 * Grade Dummy Data Generator *
 	 ******************************
@@ -163,32 +171,25 @@ public class DummyGenerator {
 	public Grade makeGrade(int stuNum, int subNum) {
 		return new Grade(stuNum, subNum, makeExamdate(), makeScore().get(0));
 	}
+
 	/********************************
 	 * Teacher Dummy Data Generator *
 	 ********************************
 	 */
-	
 	// String name, String password, String profileImage, int subNum)
 	public Teacher makeTeacher(int i) {
-		return new Teacher(
-				i,		      // makeTeacher() 를 1 ~ 5 까지만 생성하기 위해
-				makeUsername(),
-				"1", // 비번
-				Path.DEFAULT_PROFILE.toString());
+		return new Teacher(i,	// makeTeacher() 를 1 ~ 5 까지만 생성하기 위해
+						   makeUsername(),
+						   "1", // 비번
+						   Path.DEFAULT_PROFILE.toString());
 	}
+
 	/********************************
 	 * Manager Dummy Data Generator *
 	 ********************************
 	 */
-//	public Manager makeManager() {
-//		return new Manager("", makeEmail(), "1", makeUsername(), Path.DEFAULT_PROFILE.toString());
-//	}
+	public Manager makeManager() {
+		return new Manager(1, makeEmail(), "1", makeUsername(), Path.DEFAULT_PROFILE.toString());
+	}
 	
 }
-
-
-
-
-
-
-
