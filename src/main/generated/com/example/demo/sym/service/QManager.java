@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.example.demo.sym.service;
 
 import static com.querydsl.core.types.PathMetadataFactory.*;
 
@@ -15,13 +15,13 @@ import com.querydsl.core.types.Path;
 @Generated("com.querydsl.codegen.EntitySerializer")
 public class QManager extends EntityPathBase<Manager> {
 
-    private static final long serialVersionUID = -1521508653L;
+    private static final long serialVersionUID = 1508271731L;
 
     public static final QManager manager = new QManager("manager");
 
     public final StringPath email = createString("email");
 
-    public final NumberPath<Long> mgrNum = createNumber("mgrNum", Long.class);
+    public final NumberPath<Integer> mgrNum = createNumber("mgrNum", Integer.class);
 
     public final StringPath name = createString("name");
 
