@@ -1,5 +1,6 @@
 package com.example.demo.sts.service;
 
+import com.example.demo.uss.service.Student;
 import lombok.*;
 
 import javax.persistence.*;
@@ -13,17 +14,21 @@ public class Grade {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "grd_num") private int grdNum;
-	@Column(name = "stu_num") private int stuNum;
-	@Column(name = "sub_num") private int subNum;
 	@Column(name = "score") private int score;
 	@Column(name = "grade") private String grade;
 	@Column(name = "exam_date") private String examDate;
 	@Column(name = "pass_exam") private String passExam;
 
+	@ManyToOne
+	@JoinColumn(name = "sub_num")
+	private Subject subject;
+
+	@ManyToOne
+	@JoinColumn(name = "stu_num")
+	private Student student;
+
 	@Builder
-	private Grade(int stuNum, int subNum, int score, String grade, String examDate, String passExam) {
-		this.stuNum = stuNum;
-		this.subNum = subNum;
+	private Grade(int score, String grade, String examDate, String passExam) {
 		this.score = score;
 		this.grade = grade;
 		this.examDate = examDate;
@@ -31,8 +36,6 @@ public class Grade {
 	}
 
     public Grade(int stuNum, int subNum, String examDate, int score) {
-    	this.stuNum = stuNum;
-    	this.subNum = subNum;
     	this.examDate = examDate;
     	this.score = score;
     }

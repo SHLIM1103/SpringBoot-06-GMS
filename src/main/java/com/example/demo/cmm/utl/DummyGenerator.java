@@ -149,13 +149,12 @@ public class DummyGenerator {
 
 	public Student makeStudent() {
 		return new Student(makeUserid(), 
-				"1", 
-				makeUsername(), 
+				"1",
+				makeUsername(),
 				makeBirthday(), 
 				makeGender(),
 				makeRegdate(),
-				Path.DEFAULT_PROFILE.toString(),
-				1);
+				Path.DEFAULT_PROFILE.toString());
 	}
 
 	/******************************
